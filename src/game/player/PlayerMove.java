@@ -44,7 +44,7 @@ public class PlayerMove {
 
 
     public void backToScreen(Player player){
-        if(player.position.x>=1024){
+        if(player.position.x>=800){
             player.position.x =1020;
         }
         if(player.position.x<=0){

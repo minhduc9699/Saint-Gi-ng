@@ -16,7 +16,7 @@ public class GameCanvas extends JPanel {
 
     public GameCanvas() {
 
-        this.setSize(1024,600);
+        this.setSize(800,600);
         this.setupBackbuffered();
         this.setupCharacter();
         this.setupPlayer();
@@ -24,7 +24,7 @@ public class GameCanvas extends JPanel {
     }
 
     private void setupBackbuffered(){
-        this.backBuffered = new BufferedImage(1024,600,BufferedImage.TYPE_4BYTE_ABGR);
+        this.backBuffered = new BufferedImage(800,600,BufferedImage.TYPE_4BYTE_ABGR);
         this.graphics = this.backBuffered.getGraphics();
     }
 
