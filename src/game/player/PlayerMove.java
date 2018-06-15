@@ -13,33 +13,34 @@ public class PlayerMove {
     }
 
     public void run(Player player){
+        this.velocity.set(0, 0);
         if(KeyboardInput.instance.upPressed){
-            this.velocity.y = -3;
+            this.velocity.y -= 5;
         }
         if(KeyboardInput.instance.downPressed){
-            this.velocity.y = 3;
+            this.velocity.y += 5;
         }
         if(KeyboardInput.instance.leftPressed){
-            this.velocity.x = -3;
+            this.velocity.x -= 5;
         }
         if(KeyboardInput.instance.rightPressed){
-            this.velocity.x = 3;
+            this.velocity.x += 5;
         }
-        if(KeyboardInput.instance.upReleased){
-            this.velocity.y = 0;
-        }
-        if(KeyboardInput.instance.downReleased){
-            this.velocity.y = 0;
-        }
-        if(KeyboardInput.instance.leftReleased){
-            this.velocity.x = 0;
-        }
-        if(KeyboardInput.instance.rightReleased){
-            this.velocity.x = 0;
-        }
+//        if(KeyboardInput.instance.upReleased){
+//            this.velocity.y = 0;
+//        }
+//        if(KeyboardInput.instance.downReleased){
+//            this.velocity.y = 0;
+//        }
+//        if(KeyboardInput.instance.leftReleased){
+//            this.velocity.x = 0;
+//        }
+//        if(KeyboardInput.instance.rightReleased){
+//            this.velocity.x = 0;
+//        }
         this.backToScreen(player);
 
-        player.velocity.set(this.velocity);
+        player.position.addUp(this.velocity);
     }
 
 

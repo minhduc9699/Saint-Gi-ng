@@ -1,5 +1,7 @@
 import base.GameObjectManager;
 import game.background.Background;
+import game.enemy.Enemy;
+import game.enemy.EnemySpawner;
 import game.player.Player;
 import input.KeyboardInput;
 
@@ -38,6 +40,7 @@ public class GameCanvas extends JPanel {
 
     public void setupCharacter(){
         GameObjectManager.instance.add(new Background());
+        GameObjectManager.instance.add(new EnemySpawner());
     }
 
     @Override

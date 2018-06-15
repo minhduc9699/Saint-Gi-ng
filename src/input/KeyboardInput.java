@@ -23,16 +23,16 @@ public class KeyboardInput implements KeyListener {
     }
 
     public void reset() {
-        this.leftPressed = false;
-        this.leftReleased = false;
-        this.rightPressed = false;
-        this.rightReleased = false;
-        this.upPressed = false;
-        this.upReleased = false;
+//        this.leftPressed = false;
+//        this.leftReleased = false;
+//        this.rightPressed = false;
+//        this.rightReleased = false;
+//        this.upPressed = false;
+//        this.upReleased = false;
         this.spacePressed = false;
         this.spaceReleased = false;
-        this.downPressed =false;
-        this.downReleased =false;
+//        this.downPressed =false;
+//        this.downReleased =false;
     }
 
     @Override
@@ -62,19 +62,19 @@ public class KeyboardInput implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            this.leftReleased = true;
+            this.leftPressed = false;
         }
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            this.rightReleased = true;
+            this.rightPressed = false;
         }
         if (e.getKeyCode() == KeyEvent.VK_UP) {
-            this.upReleased = true;
+            this.upPressed = false;
         }
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            this.downReleased = true;
+            this.downPressed = false;
         }
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            this.spaceReleased = true;
+            this.spacePressed = false;
         }
     }
 }
