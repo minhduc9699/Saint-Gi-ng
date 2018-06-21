@@ -14,15 +14,15 @@ public class EnemySpawner extends GameObject {
         this.random = new Random();
         this.frameCounter = new FrameCounter(50);
 
-   }
+    }
 
-   @Override
+    @Override
     public void run() {
         if (this.frameCounter.run()) {
             Enemy enemy = GameObjectManager.instance.recycle(Enemy.class);
             enemy.position.set(this.random.nextInt(800), 0);
             this.frameCounter.reset();
         }
-   }
+    }
 
 }

@@ -26,18 +26,7 @@ public class PlayerMove {
         if(KeyboardInput.instance.rightPressed){
             this.velocity.x += 5;
         }
-//        if(KeyboardInput.instance.upReleased){
-//            this.velocity.y = 0;
-//        }
-//        if(KeyboardInput.instance.downReleased){
-//            this.velocity.y = 0;
-//        }
-//        if(KeyboardInput.instance.leftReleased){
-//            this.velocity.x = 0;
-//        }
-//        if(KeyboardInput.instance.rightReleased){
-//            this.velocity.x = 0;
-//        }
+
         this.backToScreen(player);
 
         player.position.addUp(this.velocity);
