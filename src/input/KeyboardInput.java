@@ -17,6 +17,10 @@ public class KeyboardInput implements KeyListener {
     public boolean downPressed;
     public boolean spacePressed;
     public boolean spaceReleased;
+    public boolean zPressed;
+    public boolean xPressed;
+    public boolean zReleased;
+    public boolean xReleased;
 
     private KeyboardInput() {
 
@@ -31,6 +35,10 @@ public class KeyboardInput implements KeyListener {
 //        this.upReleased = false;
         this.spacePressed = false;
         this.spaceReleased = false;
+        this.zPressed = false;
+        this.zReleased = false;
+        this.xPressed = false;
+        this.xReleased = false;
 //        this.downPressed =false;
 //        this.downReleased =false;
     }
@@ -57,6 +65,12 @@ public class KeyboardInput implements KeyListener {
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             this.spacePressed = true;
         }
+        if(e.getKeyCode() == KeyEvent.VK_X){
+            this.xPressed = true;
+        }
+        if(e.getKeyCode() == KeyEvent.VK_Z){
+            this.zPressed = true;
+        }
     }
 
     @Override
@@ -75,6 +89,12 @@ public class KeyboardInput implements KeyListener {
         }
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             this.spacePressed = false;
+        }
+        if(e.getKeyCode() == KeyEvent.VK_X){
+            this.xReleased = true;
+        }
+        if(e.getKeyCode() == KeyEvent.VK_Z){
+            this.zReleased = true;
         }
     }
 }

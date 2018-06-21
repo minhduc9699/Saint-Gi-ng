@@ -4,6 +4,7 @@ import base.FrameCounter;
 import base.GameObject;
 import base.GameObjectManager;
 import game.enemy.Enemy;
+import game.enemy.ShootingEnemy;
 import game.player.Player;
 import physic.BoxCollider;
 import physic.PhysicBody;
@@ -20,7 +21,7 @@ public class Melee extends GameObject implements PhysicBody {
         this.renderer = new ImageRenderer("resources/WS109-12-2013-2-PIXLR.png",200,100);
         this.boxCollider = new BoxCollider(200,100);
         this.frameCounter = new FrameCounter(2);
-        this.runHitObject = new RunHitObject(Enemy.class);
+        this.runHitObject = new RunHitObject(Enemy.class, ShootingEnemy.class);
 
     }
 
