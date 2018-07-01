@@ -17,7 +17,7 @@ public class EnemyShoot {
         if(this.frameCounter.run()){
             EnemyArrow enemyArrow = GameObjectManager.instance.recycle(EnemyArrow.class);
             enemyArrow.velocity= new Vector2D(0,4);
-            enemyArrow.position.set(shootingEnemy.position);
+            enemyArrow.position.set(shootingEnemy.position.x,shootingEnemy.position.y+40);
 
             this.frameCounter.reset();
         }

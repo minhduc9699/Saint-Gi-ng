@@ -1,5 +1,8 @@
 package input;
 
+import scene.GamePlayScene;
+import scene.SceneManager;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -21,6 +24,7 @@ public class KeyboardInput implements KeyListener {
     public boolean xPressed;
     public boolean zReleased;
     public boolean xReleased;
+    public boolean enterPress;
 
     private KeyboardInput() {
 
@@ -39,6 +43,7 @@ public class KeyboardInput implements KeyListener {
         this.zReleased = false;
         this.xPressed = false;
         this.xReleased = false;
+        this.enterPress = false;
 //        this.downPressed =false;
 //        this.downReleased =false;
     }
@@ -50,50 +55,61 @@ public class KeyboardInput implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            this.leftPressed = true;
-        }
-        if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            this.rightPressed = true;
-        }
-        if (e.getKeyCode() == KeyEvent.VK_UP) {
-            this.upPressed = true;
-        }
-        if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            this.downPressed = true;
-        }
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             this.spacePressed = true;
         }
-        if(e.getKeyCode() == KeyEvent.VK_X){
+         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+            this.leftPressed = true;
+        }
+         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            this.rightPressed = true;
+        }
+         if (e.getKeyCode() == KeyEvent.VK_UP) {
+            this.upPressed = true;
+        }
+         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+            this.downPressed = true;
+
+        }
+
+         if(e.getKeyCode() == KeyEvent.VK_X){
             this.xPressed = true;
         }
-        if(e.getKeyCode() == KeyEvent.VK_Z){
+         if(e.getKeyCode() == KeyEvent.VK_Z){
             this.zPressed = true;
+        }
+        if(e.getKeyCode()== KeyEvent.VK_ENTER){
+            SceneManager.instance.changeScene(new GamePlayScene());
+            System.out.println("Enter pressed");
         }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            this.leftPressed = false;
-        }
-        if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            this.rightPressed = false;
-        }
-        if (e.getKeyCode() == KeyEvent.VK_UP) {
-            this.upPressed = false;
-        }
-        if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            this.downPressed = false;
-        }
+
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             this.spacePressed = false;
+
+        }  if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+            this.leftPressed = false;
+
         }
-        if(e.getKeyCode() == KeyEvent.VK_X){
+         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            this.rightPressed = false;
+
+        }
+         if (e.getKeyCode() == KeyEvent.VK_UP) {
+            this.upPressed = false;
+
+        }
+         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+            this.downPressed = false;
+
+        }
+         if(e.getKeyCode() == KeyEvent.VK_X){
             this.xReleased = true;
         }
-        if(e.getKeyCode() == KeyEvent.VK_Z){
+         if(e.getKeyCode() == KeyEvent.VK_Z){
             this.zReleased = true;
         }
     }

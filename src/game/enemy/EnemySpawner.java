@@ -1,5 +1,9 @@
 package game.enemy;
 
+import action.ActionAdapter;
+import action.LimitAction;
+import action.SequenceAction;
+import action.WaitAction;
 import base.FrameCounter;
 import base.GameObject;
 import base.GameObjectManager;
@@ -13,16 +17,38 @@ public class EnemySpawner extends GameObject {
     public EnemySpawner() {
         this.random = new Random();
         this.frameCounter = new FrameCounter(50);
+        createAction();
 
     }
 
     @Override
     public void run() {
-        if (this.frameCounter.run()) {
-            Enemy enemy = GameObjectManager.instance.recycle(Enemy.class);
-            enemy.position.set(this.random.nextInt(800), 0);
-            this.frameCounter.reset();
-        }
+        super.run();
+//        if (this.frameCounter.run()) {
+//            Enemy enemy = GameObjectManager.instance.recycle(Enemy.class);
+//            enemy.position.set(this.random.nextInt(800), 0);
+//            this.frameCounter.reset();
+//        }
+    }
+
+    public void createAction(){
+        this.addAction(
+                new LimitAction(
+                        new SequenceAction(
+                                new WaitAction(200),
+                                new ActionAdapter() {
+                                    @Override
+                                    public boolean run(GameObject owner) {
+                                        Enemy enemy = GameObjectManager.instance.recycle(Enemy.class);
+                                        enemy.position.set(random.nextInt(800),2);
+                                        return true;
+                                    }
+                                }
+                        )
+                        ,70)
+        );
+
+
     }
 
 }

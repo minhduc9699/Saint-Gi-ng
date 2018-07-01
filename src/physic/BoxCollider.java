@@ -1,10 +1,11 @@
 package physic;
 
+import base.GameObject;
 import base.Vector2D;
 
 import java.awt.*;
 
-public class BoxCollider {
+public class BoxCollider{
 
     public Vector2D position;
     private int width;
@@ -21,4 +22,6 @@ public class BoxCollider {
         Rectangle r2 = new Rectangle((int) other.position.x, (int) other.position.y, other.width, other.height);
         return r1.intersects(r2);
     }
+
+
 }

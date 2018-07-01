@@ -6,6 +6,9 @@ import game.enemy.EnemySpawner;
 import game.enemy.ShootingEnemySpawner;
 import game.player.Player;
 import input.KeyboardInput;
+import scene.SceneManager;
+import scene.StartScene;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -22,9 +25,13 @@ public class GameCanvas extends JPanel {
 
         this.setSize(800,600);
         this.setupBackbuffered();
-        this.setupCharacter();
-        this.setupPlayer();
+//        this.setupCharacter();
+//        this.setupPlayer();
+
+        SceneManager.instance.changeScene(new StartScene());
         this.setVisible(true);
+
+
     }
 
     private void setupBackbuffered(){
@@ -40,11 +47,11 @@ public class GameCanvas extends JPanel {
     }
 
 
-    public void setupCharacter(){
-        GameObjectManager.instance.add(new Background());
-        GameObjectManager.instance.add(new EnemySpawner());
-        GameObjectManager.instance.add(new ShootingEnemySpawner());
-    }
+//    public void setupCharacter(){
+//        GameObjectManager.instance.add(new Background());
+//        GameObjectManager.instance.add(new EnemySpawner());
+//        GameObjectManager.instance.add(new ShootingEnemySpawner());
+//    }
 
     @Override
     protected void paintComponent(Graphics g){
@@ -52,16 +59,18 @@ public class GameCanvas extends JPanel {
 
     }
 
-    public void setupPlayer(){
-        this.player = new Player();
-        this.player.position.set(500,300);
-        GameObjectManager.instance.add(this.player);
-
-    }
+//    public void setupPlayer(){
+//        this.player = new Player();
+//        this.player.position.set(500,300);
+//        GameObjectManager.instance.add(this.player);
+//
+//    }
 
     public void renderAll(){
         GameObjectManager.instance.renderAll(this.graphics);
         this.repaint();
+        SceneManager.instance.performChangeSceneIfNeeded();
+
 
     }
 
