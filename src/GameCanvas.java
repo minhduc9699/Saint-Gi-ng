@@ -9,7 +9,6 @@ import input.KeyboardInput;
 import scene.SceneManager;
 import scene.StartScene;
 
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -19,6 +18,7 @@ public class GameCanvas extends JPanel {
     BufferedImage backBuffered;
     Graphics graphics;
     Player player;
+    public static int score;
 
 
     public GameCanvas() {
@@ -27,6 +27,7 @@ public class GameCanvas extends JPanel {
         this.setupBackbuffered();
 //        this.setupCharacter();
 //        this.setupPlayer();
+        this.score = 0;
 
         SceneManager.instance.changeScene(new StartScene());
         this.setVisible(true);
@@ -35,7 +36,7 @@ public class GameCanvas extends JPanel {
     }
 
     private void setupBackbuffered(){
-        this.backBuffered = new BufferedImage(800,600,BufferedImage.TYPE_4BYTE_ABGR);
+        this.backBuffered = new BufferedImage(800,600,BufferedImage.TYPE_INT_RGB);
         this.graphics = this.backBuffered.getGraphics();
     }
 

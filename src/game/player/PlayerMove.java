@@ -4,16 +4,21 @@ import base.Vector2D;
 import input.KeyboardInput;
 import renderer.AnimationRenderer;
 import renderer.ImageRenderer;
+import utils.Sound;
+
+import javax.sound.sampled.Clip;
 
 public class PlayerMove {
     public Vector2D velocity;
 
     public AnimationRenderer runAnimation;
     public ImageRenderer standImage;
+    public Clip clip;
 
 
     public PlayerMove() {
         this.velocity = new Vector2D();
+        this.clip = Sound.loadAudio("resources/Sound/Horse Gallop.wav");
         this.standImage = new ImageRenderer("resources/Saint Giong images/Saint/standing/saint_standing.png",64,64);
 
         this.runAnimation = new AnimationRenderer(8,
@@ -33,21 +38,29 @@ public class PlayerMove {
         if(KeyboardInput.instance.upPressed){
                 player.renderer = runAnimation;
                 this.velocity.y -= 5;
+                this.clip.loop(1);
+                this.clip.start();
 
         }
         if(KeyboardInput.instance.downPressed){
                 player.renderer = runAnimation;
                 this.velocity.y += 5;
+                this.clip.loop(1);
+                this.clip.start();
 
         }
         if(KeyboardInput.instance.leftPressed){
                 player.renderer = runAnimation;
                 this.velocity.x -= 5;
+            this.clip.loop(1);
+            this.clip.start();
 
         }
         if(KeyboardInput.instance.rightPressed){
                 player.renderer = runAnimation;
                 this.velocity.x += 5;
+            this.clip.loop(1);
+            this.clip.start();
 
         }
 

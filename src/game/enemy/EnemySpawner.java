@@ -35,12 +35,12 @@ public class EnemySpawner extends GameObject {
         this.addAction(
                 new LimitAction(
                         new SequenceAction(
-                                new WaitAction(200),
+                                new WaitAction(100),
                                 new ActionAdapter() {
                                     @Override
                                     public boolean run(GameObject owner) {
                                         Enemy enemy = GameObjectManager.instance.recycle(Enemy.class);
-                                        enemy.position.set(random.nextInt(800),2);
+                                        enemy.position.set(random.nextInt(700),2);
                                         return true;
                                     }
                                 }

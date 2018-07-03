@@ -25,6 +25,7 @@ public class KeyboardInput implements KeyListener {
     public boolean zReleased;
     public boolean xReleased;
     public boolean enterPress;
+    public boolean cPressed;
 
     private KeyboardInput() {
 
@@ -44,6 +45,7 @@ public class KeyboardInput implements KeyListener {
         this.xPressed = false;
         this.xReleased = false;
         this.enterPress = false;
+        this.cPressed = false;
 //        this.downPressed =false;
 //        this.downReleased =false;
     }
@@ -80,7 +82,9 @@ public class KeyboardInput implements KeyListener {
         }
         if(e.getKeyCode()== KeyEvent.VK_ENTER){
             SceneManager.instance.changeScene(new GamePlayScene());
-            System.out.println("Enter pressed");
+        }
+        if(e.getKeyCode() == KeyEvent.VK_C) {
+            this.cPressed = true;
         }
     }
 
@@ -111,6 +115,9 @@ public class KeyboardInput implements KeyListener {
         }
          if(e.getKeyCode() == KeyEvent.VK_Z){
             this.zReleased = true;
+        }
+        if(e.getKeyCode() == KeyEvent.VK_C) {
+            this.cPressed = false;
         }
     }
 }

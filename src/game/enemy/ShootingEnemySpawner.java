@@ -38,14 +38,14 @@ public class ShootingEnemySpawner extends GameObject {
 
         this.addAction(
                 new SequenceAction(
-                        new WaitAction(400),
+                        new WaitAction(200),
                         new LimitAction(
                                 new SequenceAction(
                                         new ActionAdapter() {
                                             @Override
                                             public boolean run(GameObject owner) {
                                                 ShootingEnemy shootingEnemy = GameObjectManager.instance.recycle(ShootingEnemy.class);
-                                                shootingEnemy.position.set(random.nextInt(800), 0);
+                                                shootingEnemy.position.set(random.nextInt(700), 0);
                                                 shootingEnemy.velocity.set(0,3);
                                                 return true;
                                             }
@@ -58,7 +58,7 @@ public class ShootingEnemySpawner extends GameObject {
 
 
                                 ),
-                                20
+                                50
                         )
                 )
         );
