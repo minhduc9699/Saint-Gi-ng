@@ -41,14 +41,48 @@ public class EnemySpawner extends GameObject {
                                     public boolean run(GameObject owner) {
                                         Enemy enemy = GameObjectManager.instance.recycle(Enemy.class);
                                         enemy.position.set(random.nextInt(700),2);
+                                        enemy.boxCollider.position.set(enemy.position);
                                         return true;
                                     }
-                                }
+                                },new ActionAdapter() {
+                            @Override
+                            public boolean run(GameObject owner) {
+                                return GameObjectManager.instance.countObjectAlive(Enemy.class) < 2;
+                            }
+                        }
                         )
                         ,70)
         );
 
 
     }
+//public void createAction(){
+//
+//    this.addAction(
+//            new SequenceAction(
+//                    new WaitAction(150),
+//                    new LimitAction(
+//                            new SequenceAction(
+//                                    new ActionAdapter() {
+//                                        @Override
+//                                        public boolean run(GameObject owner) {
+//                                            Enemy enemy = GameObjectManager.instance.recycle(Enemy.class);
+//                                            enemy.position.set(random.nextInt(700),2);
+//                                            return true;
+//                                        }
+//                                    },new ActionAdapter() {
+//                                @Override
+//                                public boolean run(GameObject owner) {
+//                                    return GameObjectManager.instance.countObjectAlive(Enemy.class)==0 ;
+//                                }
+//                            }
+//
+//
+//                            ),
+//                            70
+//                    )
+//            )
+//    );
+//}
 
 }

@@ -19,6 +19,7 @@ import utils.Sound;
 
 import javax.sound.sampled.Clip;
 import javax.swing.*;
+import java.awt.*;
 import java.util.Random;
 
 public class Enemy extends GameObject implements PhysicBody {
@@ -46,12 +47,7 @@ public class Enemy extends GameObject implements PhysicBody {
         this.velocity = new Vector2D(0,3);
         this.boxCollider = new BoxCollider(64, 64);
         GameObjectManager.instance.killObject(this);
-        this.runHitObject = new RunHitObject(
-                Player.class,
-                EnemyArrow.class,
-                Melee.class,
-                Pow.class
-        );
+
         this.renderer = animationRenderer;
 
 
@@ -65,10 +61,18 @@ public class Enemy extends GameObject implements PhysicBody {
     super.run();
     this.position.addUp(this.velocity);
     this.boxCollider.position.set(this.position.x - 32, this.position.y - 32);
+        this.runHitObject = new RunHitObject(
+                Player.class,
+                EnemyArrow.class,
+                Melee.class,
+                Pow.class
+        );
     this.runHitObject.run(this);
+    GameObjectManager.instance.killObject(this);
 
 
-}
+
+    }
 
     @Override
     public void getHit(GameObject gameObject) {
@@ -83,6 +87,9 @@ public class Enemy extends GameObject implements PhysicBody {
         }
         if(gameObject instanceof Pow || gameObject instanceof Gate){
             this.isAlive = false;
+            System.out.println(this.boxCollider.position.x+ ", "+ this.boxCollider.position.y);
+            this.boxCollider.position.set(0,0);
+
         }
         if(gameObject instanceof  Player){
             this.position.y -= 40;

@@ -45,14 +45,14 @@ public class ShootingEnemySpawner extends GameObject {
                                             @Override
                                             public boolean run(GameObject owner) {
                                                 ShootingEnemy shootingEnemy = GameObjectManager.instance.recycle(ShootingEnemy.class);
-                                                shootingEnemy.position.set(random.nextInt(700), 0);
+                                                shootingEnemy.position.set(random.nextInt(700), 2);
                                                 shootingEnemy.velocity.set(0,3);
                                                 return true;
                                             }
                                         },new ActionAdapter() {
                                     @Override
                                     public boolean run(GameObject owner) {
-                                        return GameObjectManager.instance.countObjectAlive(ShootingEnemy.class)==0 ;
+                                        return GameObjectManager.instance.countObjectAlive(ShootingEnemy.class) < 3;
                                     }
                                 }
 

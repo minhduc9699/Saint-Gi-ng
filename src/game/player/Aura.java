@@ -8,7 +8,7 @@ public class Aura extends GameObject {
 
     public Vector2D playerPosition = new Vector2D();
     public Aura(){
-        this.renderer = new AnimationRenderer(true,6,
+        this.renderer = new AnimationRenderer(false,6,
                 "resources/aura/aura1.png",
                 "resources/aura/aura2.png",
                 "resources/aura/aura3.png",

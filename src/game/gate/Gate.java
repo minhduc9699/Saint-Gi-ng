@@ -2,6 +2,7 @@ package game.gate;
 
 import base.GameObject;
 import base.GameObjectManager;
+import base.Vector2D;
 import game.arrow.EnemyArrow;
 import game.enemy.Enemy;
 import game.player.PlayerMove;
@@ -35,7 +36,10 @@ public class Gate extends GameObject implements PhysicBody {
         gateHp.count = this.life;
         super.run();
         runHitObject.run(this);
-        this.boxCollider.position.set(this.position);
+        this.boxCollider.position.set(new Vector2D(0,515));
+        if (this.life >= 10) {
+            this.life = 10;
+        }
         if(this.life < 0){
             SceneManager.instance.changeScene(new EndingScence());
 

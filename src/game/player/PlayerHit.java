@@ -124,6 +124,7 @@ public class PlayerHit {
 
                 pow.position.set(player.position.x,player.position.y-100);
                 player.powCount = 0;
+                aura.isAlive = false;
 
             }
 
